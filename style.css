@@ -156,43 +156,59 @@ header {
         transform: translateY(-8px) rotate(-45deg);
     }
     /* =========================================
-       AJUSTES DE TEXTO E ESPAÇAMENTO PARA MOBILE
+       NOVA LÓGICA EXCLUSIVA PARA TELEMÓVEL
        ========================================= */
     
-    /* Reduzir o tamanho gigante do Hero (Página Inicial) */
-    .hero {
-        padding: 60px 5%; /* Tira algum daquele espaço vazio gigante no topo */
+    /* 1. Reduzir as margens gigantes de todas as secções */
+    section, .hero, .about-section, footer {
+        padding: 40px 5%; 
     }
+
+    /* 2. FORÇAR TUDO A 1 COLUNA (Acaba com o caos da Empresa e Serviços) */
+    .services-grid,
+    .about-grid,
+    .portfolio-grid,
+    .footer-grid {
+        grid-template-columns: 1fr; /* Tudo empilhado verticalmente */
+        gap: 20px; /* Reduz espaço entre os blocos */
+    }
+
+    /* 3. Ajustar a Secção "A Empresa" para ficar compacta */
+    .about-card {
+        padding: 20px; /* Metade do espaço vazio */
+    }
+    .founder-list {
+        margin-top: 15px;
+        padding-top: 15px;
+    }
+    .founder-list li {
+        font-size: 0.85rem; /* Texto da lista mais discreto */
+    }
+
+    /* 4. Reduzir Letras globalmente para não "gritarem" */
     .hero h2 {
-        font-size: 1.8rem; /* O texto "Desenhamos o Futuro..." fica proporcional */
+        font-size: 1.5rem;
     }
     .hero p {
-        font-size: 1rem;
+        font-size: 0.95rem;
+    }
+    h2 { /* Títulos das secções */
+        font-size: 1.4rem !important;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 0.9rem;
+        line-height: 1.6;
     }
 
-    /* Reduzir os títulos de todas as outras secções (Serviços, Empresa, Contactos) */
-    .services h2, 
-    .team h2, 
-    .about-section h2, 
-    .portfolio h2, 
-    .contact-page h2 {
-        font-size: 1.6rem;
-    }
-
-    /* Dar espaço para o texto respirar na zona "A Nossa História" */
-    .about-card {
-        padding: 25px 15px; 
-    }
-
-    /* Ajustar a Grelha do Portfólio (Garante que as fotos não ficam esmagadas) */
-    .portfolio-grid {
-        grid-template-columns: 1fr; /* Força as fotos a ficarem em 1 coluna vertical simples */
-    }
-
-    /* Corrigir o problema do telemóvel pintar os números do NIF de azul escuro */
-    footer a, a[href^="tel"] {
-        color: #cbd5e1 !important; 
-        text-decoration: none;
+    /* 5. Adaptar os Botões para usar com o polegar */
+    .btn {
+        display: block; /* Transforma num bloco inteiro */
+        width: 100%; /* Ocupa a largura do ecrã */
+        text-align: center;
+        padding: 12px 20px;
+        font-size: 0.95rem;
+        box-sizing: border-box;
     }
 
 }
