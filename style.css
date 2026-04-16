@@ -155,6 +155,46 @@ header {
     .menu-toggle.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
+    /* =========================================
+       AJUSTES DE TEXTO E ESPAÇAMENTO PARA MOBILE
+       ========================================= */
+    
+    /* Reduzir o tamanho gigante do Hero (Página Inicial) */
+    .hero {
+        padding: 60px 5%; /* Tira algum daquele espaço vazio gigante no topo */
+    }
+    .hero h2 {
+        font-size: 1.8rem; /* O texto "Desenhamos o Futuro..." fica proporcional */
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Reduzir os títulos de todas as outras secções (Serviços, Empresa, Contactos) */
+    .services h2, 
+    .team h2, 
+    .about-section h2, 
+    .portfolio h2, 
+    .contact-page h2 {
+        font-size: 1.6rem;
+    }
+
+    /* Dar espaço para o texto respirar na zona "A Nossa História" */
+    .about-card {
+        padding: 25px 15px; 
+    }
+
+    /* Ajustar a Grelha do Portfólio (Garante que as fotos não ficam esmagadas) */
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* Força as fotos a ficarem em 1 coluna vertical simples */
+    }
+
+    /* Corrigir o problema do telemóvel pintar os números do NIF de azul escuro */
+    footer a, a[href^="tel"] {
+        color: #cbd5e1 !important; 
+        text-decoration: none;
+    }
+
 }
 
 /* =========================================
