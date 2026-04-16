@@ -210,9 +210,102 @@ header {
         font-size: 0.95rem;
         box-sizing: border-box;
     }
+    .faq-question {
+        font-size: 0.95rem;
+        padding: 15px;
+    }
+    .faq-answer p {
+        padding: 0 15px 0px 15px;
+        font-size: 0.9rem;
+    }
+    /* Ajustes específicos para a Index e Contactos */
+    .hero-content h1 {
+        font-size: 1.8rem; /* Título principal da Index mais equilibrado */
+    }
 
+    .contact-container {
+        grid-template-columns: 1fr; /* Coloca o formulário por cima das informações */
+    }
+
+    .map-container iframe {
+        height: 300px; /* Mapa mais pequeno para não ocupar o ecrã todo */
+    }
+}
+/* =========================================
+   SECÇÃO DE FAQ (PERGUNTAS FREQUENTES)
+   ========================================= */
+.faq-section {
+    padding: 80px 5%;
+    background-color: #F8FAFC; /* Um cinza muito suave para destacar as perguntas */
 }
 
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-subtitle {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #64748b;
+}
+
+.faq-item {
+    background: white;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 20px;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--cor-principal);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #f1f5f9;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    color: var(--cor-destaque);
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background: white;
+}
+
+.faq-answer p {
+    padding: 0 20px 0px 20px;
+    margin: 0;
+    color: #475569;
+}
+
+/* O que acontece quando o JS mete a classe 'active' */
+.faq-item.active .faq-answer {
+    max-height: 300px; 
+    padding-bottom: 20px; /* Dá espaço ao texto em baixo */
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg); /* Roda o "+" para virar um "X" dourado */
+}
 /* =========================================
    3. SECÇÃO HERO E BOTÕES
    ========================================= */

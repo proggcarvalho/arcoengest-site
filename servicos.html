@@ -73,13 +73,78 @@
         </div>
     </footer>
 
+    <section class="faq-section">
+        <div class="faq-container">
+            <h2>Perguntas Frequentes</h2>
+            <p class="faq-subtitle">Esclareça as suas dúvidas sobre os nossos processos e serviços.</p>
+            
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Qual é a vantagem de contratar um serviço integrado de Arquitetura e Engenharia?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ao centralizar a arquitetura e a engenharia na ARCOENGEST, garantimos total compatibilidade entre o design pensado e a viabilidade estrutural. Isto traduz-se em menos derrapagens orçamentais, maior rapidez na obra e ausência de falhas de comunicação entre equipas diferentes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Acompanham o processo de licenciamento junto da Câmara Municipal?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim. Cuidamos de todo o processo burocrático, desde a elaboração dos projetos de especialidade exigidos por lei, até à entrega e acompanhamento do processo de licenciamento camarário, garantindo que tudo cumpre as normas em vigor.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Trabalham apenas em Leiria ou em todo o país?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Embora a nossa sede seja nos Parceiros, em Leiria, temos capacidade e disponibilidade para estudar e executar projetos noutras regiões do país. Contacte-nos para avaliarmos a viabilidade do seu projeto na sua zona.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Quanto custa um projeto de especialidades ou um orçamento?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>O custo varia consoante a dimensão da obra, a sua complexidade e as engenharias necessárias. O nosso método passa por fazer uma análise inicial cuidada para apresentar um orçamento feito à medida. Entre em contacto connosco para expor a sua ideia, sem compromisso!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
+        // Magia do Menu Mobile
         const menuToggle = document.querySelector('.menu-toggle');
         const mainNav = document.querySelector('.main-nav');
-
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             mainNav.classList.toggle('active');
+        });
+
+        // Magia das Perguntas Frequentes (Acordeão)
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Fecha as outras perguntas se abrires uma nova (para manter limpo)
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Abre/Fecha a pergunta que clicaste
+                item.classList.toggle('active');
+            });
         });
     </script>
 
