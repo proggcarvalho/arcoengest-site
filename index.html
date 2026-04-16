@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCOENGEST | Soluções de Arquitetura e Engenharia</title>
+    <meta name="description" content="Gabinete de Arquitetura e Engenharia nos Parceiros, Leiria. Desenvolvemos projetos integrados, construção, requalificação e design de espaços com rigor técnico.">
+    <meta name="keywords" content="Arquitetura, Engenharia, Leiria, Parceiros, Construção, Requalificação, Obras, Projetos, ARCOENGEST">
+    <meta name="author" content="ARCOENGEST">
+    <link rel="icon" type="image/svg+xml;charset=utf-8" href="./img_arcoengest/logo2_arcoengest.png">    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="./img_arcoengest/rbg-logo_arcoengest.png" alt="ARCOENGEST Logo" class="logo-image">
+            </a>
+            <p class="logo-subtitle">Soluções de Arquitetura e Engenharia, Lda</p>
+        </div>
+
+        <button class="menu-toggle" aria-label="Abrir Menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="servicos.html">Serviços</a></li>
+                <li><a href="empresa.html">A Empresa</a></li>
+                <li><a href="contactos.html">Contactos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Desenhamos o Futuro, Construímos com Rigor.</h2>
+            <p>Desde 2017 a desenvolver projetos integrados de excelência na área da construção, requalificação e design de espaços.</p>
+            <a href="contactos.html" class="btn">Fale Connosco</a>
+        </div>
+    </section>
+
+    <section class="portfolio">
+        <h2>O Nosso Trabalho</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="./img_arcoengest/mangues_1.jpg" alt="Projeto 1">
+            </div>
+            <div class="portfolio-item">
+                <img src="./img_arcoengest/mangues_2.jpg" alt="Projeto 2">
+            </div>
+            <div class="portfolio-item">
+                <img src="./img_arcoengest/mangues_3.jpg" alt="Projeto 3">
+            </div>
+            <div class="portfolio-item">
+                <img src="./img_arcoengest/mangues_4.jpg" alt="Projeto 4">
+            </div>
+            <div class="portfolio-item">
+                <img src="./img_arcoengest/mangues_5.jpg" alt="Projeto 5">
+            </div>
+            <div class="portfolio-item">
+                <img src="./img_arcoengest/nasa_remodelacao.jpg" alt="Projeto 6">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2026 ARCOENGEST - Soluções de Arquitetura e Engenharia, Lda. (NIF: 514 436 808)</p>
+            <p>- Todos os direitos reservados. - </p>
+        </div>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            mainNav.classList.toggle('active');
+        });
+    </script>
+
+</body>
+</html>

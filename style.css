@@ -1,0 +1,461 @@
+/* =========================================
+   1. RESET BÁSICO E VARIÁVEIS DE COR
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --cor-principal: #1A365D; /* Azul escuro corporativo */
+    --cor-secundaria: #E2E8F0; /* Cinza claro */
+    --cor-destaque: #D69E2E; /* Dourado/Mostarda para botões */
+    --cor-texto: #333333;
+}
+
+body {
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* =========================================
+   2. CABEÇALHO E NAVEGAÇÃO (Atualizado para Fundo Branco)
+   ========================================= */
+header {
+    background-color: white; /* O fundo passa a branco para acolher bem o logo */
+    color: var(--cor-principal);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Sombra elegante para separar o cabeçalho do resto da página */
+}
+
+/* Tamanho do Logótipo */
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Centra o logo e o texto verticalmente na mesma linha */
+    gap: 20px; /* Dá um espaço de respiro entre o logo e o texto */
+}
+
+.logo-image {
+    height: 55px; 
+    width: auto;
+    display: block;
+}
+
+.logo-subtitle {
+    font-size: 0.9rem;
+    color: #666666;
+    font-weight: 500;
+    margin: 0; /* Remove as margens para não desalinhar */
+    
+    /* Detalhe elegante (Opcional): Uma linha vertical a separar */
+    border-left: 2px solid var(--cor-secundaria); 
+    padding-left: 20px; 
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: var(--cor-principal); /* Os links do menu passam a Azul Escuro */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--cor-destaque); /* Fica Dourado quando passas o rato */
+}
+
+/* Estilos do Botão Hambúrguer (Escondido no PC) */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 100;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--cor-principal);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+header {
+    position: relative; /* Necessário para o menu mobile abrir por baixo */
+}
+
+/* =========================================
+   REGRAS PARA TELEMÓVEIS (Ecrãs menores que 768px)
+   ========================================= */
+@media (max-width: 768px) {
+    /* Esconde o subtítulo para poupar espaço no topo */
+    .logo-subtitle {
+        display: none; 
+    }
+
+    /* Mostra o botão Hambúrguer */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Esconde o Menu Normal e prepara o formato "Gaveta" */
+    .main-nav {
+        display: none; 
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        z-index: 99;
+    }
+
+    /* O que acontece quando o JavaScript mete a classe 'active' */
+    .main-nav.active {
+        display: block; 
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Links de cima para baixo */
+        gap: 0;
+    }
+
+    .main-nav li {
+        text-align: center;
+        border-bottom: 1px solid #f1f5f9;
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 15px;
+    }
+
+    /* Animação do botão Hambúrguer a transformar-se num 'X' */
+    .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+/* =========================================
+   3. SECÇÃO HERO E BOTÕES
+   ========================================= */
+.hero {
+    background-color: var(--cor-secundaria);
+    padding: 100px 5%;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    color: var(--cor-principal);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--cor-destaque);
+    color: white;
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background-color: #B7791F;
+}
+
+/* =========================================
+   4. SERVIÇOS
+   ========================================= */
+.services {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.services h2 {
+    color: var(--cor-principal);
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.services-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 30px;
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.service-card h3 {
+    color: var(--cor-principal);
+    margin-bottom: 15px;
+}
+
+/* =========================================
+   5. A EMPRESA (Design Lado a Lado Moderno)
+   ========================================= */
+.about-section {
+    padding: 80px 5%;
+    background-color: white; /* Fundo limpo e branco */
+}
+
+.about-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    /* Cria 2 colunas no PC. Se for telemóvel, ele próprio muda para 1 coluna! */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px; /* Espaço elegante entre os dois blocos */
+}
+
+.about-card {
+    background: #F8FAFC; /* Cinza super claro, quase branco */
+    padding: 40px;
+    border-radius: 0 0 8px 8px; /* Cantos redondos só em baixo */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04); /* Sombra muito suave para dar profundidade */
+}
+
+.history-card {
+    border-top: 4px solid var(--cor-principal); /* Linha Azul no topo da História */
+}
+
+.founder-card {
+    border-top: 4px solid var(--cor-destaque); /* Linha Dourada no topo do Fundador */
+}
+
+.about-card h2 {
+    color: var(--cor-principal);
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.about-card h3 {
+    color: var(--cor-texto);
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+}
+
+.about-card .role {
+    color: var(--cor-destaque);
+    font-weight: bold;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.about-card p {
+    margin-bottom: 15px;
+    color: #555;
+    text-align: justify; /* Justificar o texto dá o tal rigor arquitetónico */
+    line-height: 1.7;
+}
+
+.founder-list {
+    list-style: none;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #E2E8F0; /* Uma linha subtil a separar o texto da lista */
+}
+
+.founder-list li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: #444;
+}
+
+/* =========================================
+   6. GALERIA DE PROJETOS NA PÁGINA INICIAL
+   ========================================= */
+.portfolio {
+    padding: 60px 5%;
+    background-color: white;
+    text-align: center;
+}
+
+.portfolio h2 {
+    color: var(--cor-principal);
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    aspect-ratio: 4 / 3;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.08);
+}
+
+/* =========================================
+   7. PÁGINA DE CONTACTOS
+   ========================================= */
+.contact-page {
+    padding: 60px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-page h2 {
+    color: var(--cor-principal);
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.contact-intro {
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.contact-grid {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border-top: 5px solid var(--cor-principal);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--cor-principal);
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fcfcfc;
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--cor-destaque);
+    background-color: white;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-details {
+    background: var(--cor-principal);
+    color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.info-details h3 {
+    color: var(--cor-destaque);
+    margin-bottom: 15px;
+}
+
+.info-details p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.map-container {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border: 2px solid #ddd;
+}
+
+/* =========================================
+   8. RODAPÉ SIMPLIFICADO
+   ========================================= */
+footer {
+    background-color: var(--cor-principal); /* O fundo Azul Escuro */
+    color: white;
+    text-align: center;
+    padding: 40px 5%; /* Espaço em cima e em baixo para respirar */
+    font-size: 0.95rem;
+}
+
+footer p {
+    margin-bottom: 8px; /* Pequeno espaço entre as linhas de texto */
+    letter-spacing: 0.5px; /* Afasta ligeiramente as letras para ler melhor */
+}
