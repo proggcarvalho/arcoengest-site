@@ -99,5 +99,40 @@
         </div>
     </footer>
 
+    <div id="cookie-banner" class="cookie-banner">
+        <p>Utilizamos cookies para garantir o funcionamento correto do site e melhorar a sua experiência. Ao continuar a navegar, concorda com a nossa política de privacidade.</p>
+        <button id="aceitar-cookies" class="btn cookie-btn">Aceitar e Fechar</button>
+    </div>
+
+    <script>
+        // 1. Magia do Menu Mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.querySelector('.main-nav');
+        if(menuToggle && mainNav) {
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+        }
+
+        // 2. Magia do Aviso de Cookies
+        const cookieBanner = document.getElementById('cookie-banner');
+        const aceitarBtn = document.getElementById('aceitar-cookies');
+
+        // Se a memória "cookiesAceites" NÃO existir, mostra o banner passado 1 segundo
+        if (!localStorage.getItem('cookiesAceites') && cookieBanner) {
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 1000); 
+        }
+
+        // O que acontece quando clica no botão "Aceitar"
+        if(aceitarBtn) {
+            aceitarBtn.addEventListener('click', () => {
+                localStorage.setItem('cookiesAceites', 'sim'); // Guarda na memória
+                cookieBanner.classList.remove('show'); // Esconde o banner
+            });
+        }
+    </script>
 </body>
 </html>

@@ -72,6 +72,11 @@
         </div>
     </footer>
 
+    <div id="cookie-banner" class="cookie-banner">
+        <p>Utilizamos cookies para garantir o funcionamento correto do site e melhorar a sua experiência. Ao continuar a navegar, concorda com a nossa política de privacidade.</p>
+        <button id="aceitar-cookies" class="btn cookie-btn">Aceitar e Fechar</button>
+    </div>
+
     <script>
         const menuToggle = document.querySelector('.menu-toggle');
         const mainNav = document.querySelector('.main-nav');
@@ -79,6 +84,22 @@
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             mainNav.classList.toggle('active');
+        });
+        // Magia do Aviso de Cookies
+        const cookieBanner = document.getElementById('cookie-banner');
+        const aceitarBtn = document.getElementById('aceitar-cookies');
+
+        // Se a memória "cookiesAceites" NÃO existir, mostra o banner passado 1 segundo
+        if (!localStorage.getItem('cookiesAceites')) {
+            setTimeout(() => {
+                cookieBanner.classList.add('show');
+            }, 1000); // O atraso de 1 segundo dá um toque premium
+        }
+
+        // O que acontece quando clica no botão
+        aceitarBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAceites', 'sim'); // Guarda na memória do navegador
+            cookieBanner.classList.remove('show'); // Esconde o banner a deslizar para baixo
         });
     </script>
 
