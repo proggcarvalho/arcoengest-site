@@ -124,6 +124,8 @@ nav a:hover { color: var(--cor-destaque); }
    ========================================= */
 footer { background-color: var(--cor-principal); color: white; text-align: center; padding: 40px 5%; font-size: 0.95rem; }
 
+.mobile-break { display: none; }
+
 /* =========================================
    8. REGRAS EXCLUSIVAS PARA TELEMÓVEL
    ========================================= */
@@ -169,4 +171,6 @@ footer { background-color: var(--cor-principal); color: white; text-align: cente
 
     /* Forçar o iPhone a deixar o NIF a branco e não clicável */
     footer a, footer a[href^="tel"] { color: white !important; text-decoration: none !important; pointer-events: none; }
+
+    .mobile-break { display: block; }
 }
