@@ -155,6 +155,7 @@ header {
     .menu-toggle.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
+
     /* =========================================
        NOVA LÓGICA EXCLUSIVA PARA TELEMÓVEL
        ========================================= */
@@ -164,21 +165,32 @@ header {
         padding: 40px 5%; 
     }
 
-    /* 2. FORÇAR TUDO A 1 COLUNA (Acaba com o caos da Empresa e Serviços) */
+    /* 2. FORÇAR TUDO A 1 COLUNA */
     .services-grid,
     .about-grid,
     .portfolio-grid,
+    .contact-grid,
+    .contact-container,
     .footer-grid {
         grid-template-columns: 1fr; /* Tudo empilhado verticalmente */
         gap: 20px; /* Reduz espaço entre os blocos */
     }
 
-    /* 3. Ajustar a Secção "A Empresa" para ficar compacta */
+    /* 3. Ajustar a Secção "A Empresa" para ficar compacta e centrada */
     .about-card {
-        padding: 20px; /* Metade do espaço vazio */
+        padding: 25px 20px; 
+        text-align: center; /* Centra o conteúdo todo */
+        border-radius: 8px !important; /* Arredonda os 4 cantos da caixa */
+        margin-bottom: 10px; /* Dá um respiro extra */
+    }
+    .about-card p {
+        text-align: center !important; /* Obriga o texto a ficar centrado */
+        font-size: 0.95rem;
     }
     .founder-list {
-        margin-top: 15px;
+        display: table; /* Transforma a lista num bloco ajustado */
+        margin: 20px auto 0 auto; /* Empurra a lista para o centro exato do ecrã */
+        text-align: left; /* Mantém os ícones alinhados na vertical uns com os outros */
         padding-top: 15px;
     }
     .founder-list li {
@@ -210,6 +222,8 @@ header {
         font-size: 0.95rem;
         box-sizing: border-box;
     }
+
+    /* 6. FAQ Mobile */
     .faq-question {
         font-size: 0.95rem;
         padding: 15px;
@@ -218,17 +232,24 @@ header {
         padding: 0 15px 0px 15px;
         font-size: 0.9rem;
     }
-    /* Ajustes específicos para a Index e Contactos */
+
+    /* 7. Ajustes específicos para a Index e Contactos */
     .hero-content h1 {
         font-size: 1.8rem; /* Título principal da Index mais equilibrado */
     }
-
-    .contact-container {
-        grid-template-columns: 1fr; /* Coloca o formulário por cima das informações */
-    }
-
     .map-container iframe {
         height: 300px; /* Mapa mais pequeno para não ocupar o ecrã todo */
+        width: 100%;
+    }
+    .contact-form { 
+        padding: 20px; 
+    }
+
+    /* 8. Correção do NIF (Cor azul nos iPhones) */
+    footer a, 
+    footer a[href^="tel"] {
+        color: white !important;
+        text-decoration: none !important;
     }
 }
 /* =========================================
