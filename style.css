@@ -9,9 +9,9 @@
 }
 
 :root {
-    --cor-principal: #1A365D; /* Azul escuro corporativo */
-    --cor-secundaria: #E2E8F0; /* Cinza claro */
-    --cor-destaque: #D69E2E; /* Dourado/Mostarda para botões */
+    --cor-principal: #1A365D;
+    --cor-secundaria: #E2E8F0;
+    --cor-destaque: #D69E2E;
     --cor-texto: #333333;
 }
 
@@ -21,24 +21,24 @@ body {
 }
 
 /* =========================================
-   2. CABEÇALHO E NAVEGAÇÃO (Atualizado para Fundo Branco)
+   2. CABEÇALHO E NAVEGAÇÃO
    ========================================= */
 header {
-    background-color: white; /* O fundo passa a branco para acolher bem o logo */
+    background-color: white;
     color: var(--cor-principal);
     padding: 1rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Sombra elegante para separar o cabeçalho do resto da página */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    position: relative;
+    z-index: 1000;
 }
-
-/* Tamanho do Logótipo */
 
 .logo-container {
     display: flex;
-    align-items: center; /* Centra o logo e o texto verticalmente na mesma linha */
-    gap: 20px; /* Dá um espaço de respiro entre o logo e o texto */
+    align-items: center;
+    gap: 20px;
 }
 
 .logo-image {
@@ -51,603 +51,122 @@ header {
     font-size: 0.9rem;
     color: #666666;
     font-weight: 500;
-    margin: 0; /* Remove as margens para não desalinhar */
-    
-    /* Detalhe elegante (Opcional): Uma linha vertical a separar */
     border-left: 2px solid var(--cor-secundaria); 
     padding-left: 20px; 
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-}
+nav ul { list-style: none; display: flex; gap: 20px; }
+nav a { color: var(--cor-principal); text-decoration: none; font-weight: bold; transition: color 0.3s; }
+nav a:hover { color: var(--cor-destaque); }
 
-nav a {
-    color: var(--cor-principal); /* Os links do menu passam a Azul Escuro */
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-}
+.menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 10px; }
+.menu-toggle .bar { width: 25px; height: 3px; background-color: var(--cor-principal); border-radius: 2px; transition: all 0.3s ease; }
 
-nav a:hover {
-    color: var(--cor-destaque); /* Fica Dourado quando passas o rato */
-}
-
-/* Estilos do Botão Hambúrguer (Escondido no PC) */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 100;
-}
-
-.menu-toggle .bar {
-    width: 25px;
-    height: 3px;
-    background-color: var(--cor-principal);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-}
-
-header {
-    position: relative; /* Necessário para o menu mobile abrir por baixo */
-}
-
-/* =========================================
-   REGRAS PARA TELEMÓVEIS (Ecrãs menores que 768px)
-   ========================================= */
-@media (max-width: 768px) {
-    /* Esconde o subtítulo para poupar espaço no topo */
-    .logo-subtitle {
-        display: none; 
-    }
-
-    /* Mostra o botão Hambúrguer */
-    .menu-toggle {
-        display: flex;
-    }
-
-    /* Esconde o Menu Normal e prepara o formato "Gaveta" */
-    .main-nav {
-        display: none; 
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: white;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        z-index: 99;
-    }
-
-    /* O que acontece quando o JavaScript mete a classe 'active' */
-    .main-nav.active {
-        display: block; 
-    }
-
-    .main-nav ul {
-        flex-direction: column; /* Links de cima para baixo */
-        gap: 0;
-    }
-
-    .main-nav li {
-        text-align: center;
-        border-bottom: 1px solid #f1f5f9;
-    }
-
-    .main-nav a {
-        display: block;
-        padding: 15px;
-    }
-
-    /* Animação do botão Hambúrguer a transformar-se num 'X' */
-    .menu-toggle.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    .menu-toggle.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-    .menu-toggle.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-
-    /* =========================================
-       NOVA LÓGICA EXCLUSIVA PARA TELEMÓVEL
-       ========================================= */
-    
-    /* 1. Reduzir as margens gigantes de todas as secções */
-    section, .hero, .about-section, footer {
-        padding: 40px 5%; 
-    }
-
-    /* 2. FORÇAR TUDO A 1 COLUNA */
-    .services-grid,
-    .about-grid,
-    .portfolio-grid,
-    .contact-grid,
-    .contact-container,
-    .footer-grid {
-        grid-template-columns: 1fr; /* Tudo empilhado verticalmente */
-        gap: 20px; /* Reduz espaço entre os blocos */
-    }
-
-    /* 3. Ajustar a Secção "A Empresa" para ficar compacta e centrada */
-    .about-card {
-        padding: 25px 20px; 
-        text-align: center; /* Centra o conteúdo todo */
-        border-radius: 8px !important; /* Arredonda os 4 cantos da caixa */
-        margin-bottom: 10px; /* Dá um respiro extra */
-    }
-    .about-card p {
-        text-align: center !important; /* Obriga o texto a ficar centrado */
-        font-size: 0.95rem;
-    }
-    .founder-list {
-        display: table; /* Transforma a lista num bloco ajustado */
-        margin: 20px auto 0 auto; /* Empurra a lista para o centro exato do ecrã */
-        text-align: left; /* Mantém os ícones alinhados na vertical uns com os outros */
-        padding-top: 15px;
-    }
-    .founder-list li {
-        font-size: 0.85rem; /* Texto da lista mais discreto */
-    }
-
-    /* 4. Reduzir Letras globalmente para não "gritarem" */
-    .hero h2 {
-        font-size: 1.5rem;
-    }
-    .hero p {
-        font-size: 0.95rem;
-    }
-    h2 { /* Títulos das secções */
-        font-size: 1.4rem !important;
-        margin-bottom: 20px;
-    }
-    p {
-        font-size: 0.9rem;
-        line-height: 1.6;
-    }
-
-    /* 5. Adaptar os Botões para usar com o polegar */
-    .btn {
-        display: block; /* Transforma num bloco inteiro */
-        width: 100%; /* Ocupa a largura do ecrã */
-        text-align: center;
-        padding: 12px 20px;
-        font-size: 0.95rem;
-        box-sizing: border-box;
-    }
-
-    /* 6. FAQ Mobile */
-    .faq-question {
-        font-size: 0.95rem;
-        padding: 15px;
-    }
-    .faq-answer p {
-        padding: 0 15px 0px 15px;
-        font-size: 0.9rem;
-    }
-
-    /* 7. Ajustes específicos para a Index e Contactos */
-    .hero-content h1 {
-        font-size: 1.8rem; /* Título principal da Index mais equilibrado */
-    }
-    .map-container iframe {
-        height: 300px; /* Mapa mais pequeno para não ocupar o ecrã todo */
-        width: 100%;
-    }
-    .contact-form { 
-        padding: 20px; 
-    }
-
-    /* 8. Correção do NIF (Cor azul nos iPhones) */
-    footer a, 
-    footer a[href^="tel"] {
-        color: white !important;
-        text-decoration: none !important;
-    }
-}
-/* =========================================
-   SECÇÃO DE FAQ (PERGUNTAS FREQUENTES)
-   ========================================= */
-.faq-section {
-    padding: 80px 5%;
-    background-color: #F8FAFC; /* Um cinza muito suave para destacar as perguntas */
-}
-
-.faq-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.faq-subtitle {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #64748b;
-}
-
-.faq-item {
-    background: white;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-    overflow: hidden;
-}
-
-.faq-question {
-    width: 100%;
-    text-align: left;
-    background: none;
-    border: none;
-    padding: 20px;
-    font-size: 1.05rem;
-    font-weight: bold;
-    color: var(--cor-principal);
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background 0.3s ease;
-}
-
-.faq-question:hover {
-    background-color: #f1f5f9;
-}
-
-.faq-icon {
-    font-size: 1.5rem;
-    color: var(--cor-destaque);
-    transition: transform 0.3s ease;
-}
-
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-    background: white;
-}
-
-.faq-answer p {
-    padding: 0 20px 0px 20px;
-    margin: 0;
-    color: #475569;
-}
-
-/* O que acontece quando o JS mete a classe 'active' */
-.faq-item.active .faq-answer {
-    max-height: 300px; 
-    padding-bottom: 20px; /* Dá espaço ao texto em baixo */
-}
-
-.faq-item.active .faq-icon {
-    transform: rotate(45deg); /* Roda o "+" para virar um "X" dourado */
-}
 /* =========================================
    3. SECÇÃO HERO E BOTÕES
    ========================================= */
-.hero {
-    background-color: var(--cor-secundaria);
-    padding: 100px 5%;
-    text-align: center;
-}
-
-.hero h2 {
-    font-size: 2.5rem;
-    color: var(--cor-principal);
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-.btn {
-    display: inline-block;
-    background-color: var(--cor-destaque);
-    color: white;
-    padding: 10px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.btn:hover {
-    background-color: #B7791F;
-}
+.hero { background-color: var(--cor-secundaria); padding: 100px 5%; text-align: center; }
+.hero h2 { font-size: 2.5rem; color: var(--cor-principal); margin-bottom: 20px; }
+.hero p { font-size: 1.2rem; margin-bottom: 30px; }
+.btn { display: inline-block; background-color: var(--cor-destaque); color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s; border: none; cursor: pointer; }
+.btn:hover { background-color: #B7791F; }
 
 /* =========================================
-   4. SERVIÇOS
+   4. SERVIÇOS, PORTFÓLIO E FAQ
    ========================================= */
-.services {
-    padding: 60px 5%;
-    text-align: center;
-}
+.services, .portfolio, .faq-section { padding: 80px 5%; text-align: center; }
+.faq-section { background-color: #F8FAFC; }
+.services h2, .portfolio h2 { color: var(--cor-principal); margin-bottom: 40px; font-size: 2rem; }
 
-.services h2 {
-    color: var(--cor-principal);
-    margin-bottom: 40px;
-    font-size: 2rem;
-}
+.services-grid, .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+.service-card { background: white; border: 1px solid #ddd; padding: 30px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
 
-.services-grid {
-    display: flex;
-    gap: 30px;
-    justify-content: center;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-}
+.portfolio-item { overflow: hidden; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); aspect-ratio: 4 / 3; }
+.portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.portfolio-item:hover img { transform: scale(1.08); }
 
-.service-card {
-    background: white;
-    border: 1px solid #ddd;
-    padding: 30px;
-    border-radius: 8px;
-    width: 300px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
-.service-card h3 {
-    color: var(--cor-principal);
-    margin-bottom: 15px;
-}
+.faq-container { max-width: 800px; margin: 0 auto; }
+.faq-item { background: white; margin-bottom: 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); overflow: hidden; }
+.faq-question { width: 100%; text-align: left; background: none; border: none; padding: 20px; font-weight: bold; color: var(--cor-principal); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: white; }
+.faq-item.active .faq-answer { max-height: 300px; padding-bottom: 20px; }
+.faq-item.active .faq-icon { transform: rotate(45deg); }
 
 /* =========================================
-   5. A EMPRESA (Design Lado a Lado Moderno)
+   5. A EMPRESA
    ========================================= */
-.about-section {
-    padding: 80px 5%;
-    background-color: white; /* Fundo limpo e branco */
-}
-
-.about-grid {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    /* Cria 2 colunas no PC. Se for telemóvel, ele próprio muda para 1 coluna! */
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 40px; /* Espaço elegante entre os dois blocos */
-}
-
-.about-card {
-    background: #F8FAFC; /* Cinza super claro, quase branco */
-    padding: 40px;
-    border-radius: 0 0 8px 8px; /* Cantos redondos só em baixo */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.04); /* Sombra muito suave para dar profundidade */
-}
-
-.history-card {
-    border-top: 4px solid var(--cor-principal); /* Linha Azul no topo da História */
-}
-
-.founder-card {
-    border-top: 4px solid var(--cor-destaque); /* Linha Dourada no topo do Fundador */
-}
-
-.about-card h2 {
-    color: var(--cor-principal);
-    font-size: 2rem;
-    margin-bottom: 25px;
-}
-
-.about-card h3 {
-    color: var(--cor-texto);
-    font-size: 1.4rem;
-    margin-bottom: 5px;
-}
-
-.about-card .role {
-    color: var(--cor-destaque);
-    font-weight: bold;
-    font-size: 0.95rem;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.about-card p {
-    margin-bottom: 15px;
-    color: #555;
-    text-align: justify; /* Justificar o texto dá o tal rigor arquitetónico */
-    line-height: 1.7;
-}
-
-.founder-list {
-    list-style: none;
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid #E2E8F0; /* Uma linha subtil a separar o texto da lista */
-}
-
-.founder-list li {
-    margin-bottom: 12px;
-    font-size: 0.95rem;
-    color: #444;
-}
+.about-section { padding: 80px 5%; background-color: white; }
+.about-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.about-card { background: #F8FAFC; padding: 40px; border-radius: 0 0 8px 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+.history-card { border-top: 4px solid var(--cor-principal); }
+.founder-card { border-top: 4px solid var(--cor-destaque); }
+.about-card h2 { color: var(--cor-principal); font-size: 2rem; margin-bottom: 25px; }
+.about-card .role { color: var(--cor-destaque); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+.about-card p { margin-bottom: 15px; color: #555; text-align: justify; line-height: 1.7; }
+.founder-list { list-style: none; margin-top: 25px; padding-top: 20px; border-top: 1px solid #E2E8F0; }
+.founder-list li { margin-bottom: 12px; font-size: 0.95rem; color: #444; }
 
 /* =========================================
-   6. GALERIA DE PROJETOS NA PÁGINA INICIAL
+   6. CONTACTOS
    ========================================= */
-.portfolio {
-    padding: 60px 5%;
-    background-color: white;
-    text-align: center;
-}
-
-.portfolio h2 {
-    color: var(--cor-principal);
-    margin-bottom: 40px;
-    font-size: 2rem;
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.portfolio-item {
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    aspect-ratio: 4 / 3;
-}
-
-.portfolio-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-    display: block;
-}
-
-.portfolio-item:hover img {
-    transform: scale(1.08);
-}
+.contact-page { padding: 80px 5%; max-width: 1200px; margin: 0 auto; }
+.contact-page h2 { color: var(--cor-principal); font-size: 2.2rem; margin-bottom: 10px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
+.contact-form { padding: 30px; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border-top: 5px solid var(--cor-principal); }
+.form-group { margin-bottom: 20px; text-align: left; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; }
+.info-details { background: var(--cor-principal); color: white; padding: 30px; border-radius: 8px; margin-bottom: 20px; }
+.info-details h3 { color: var(--cor-destaque); margin-bottom: 15px; }
+.map-container iframe { border-radius: 8px; width: 100%; height: 300px; }
 
 /* =========================================
-   7. PÁGINA DE CONTACTOS
+   7. RODAPÉ
    ========================================= */
-.contact-page {
-    padding: 60px 5%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.contact-page h2 {
-    color: var(--cor-principal);
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
-
-.contact-intro {
-    margin-bottom: 40px;
-    font-size: 1.1rem;
-    color: #555;
-}
-
-.contact-grid {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.contact-form {
-    flex: 1;
-    min-width: 300px;
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    border-top: 5px solid var(--cor-principal);
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: var(--cor-principal);
-}
-
-.form-group input, 
-.form-group select, 
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #fcfcfc;
-}
-
-.form-group input:focus, 
-.form-group select:focus, 
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--cor-destaque);
-    background-color: white;
-}
-
-.contact-info {
-    flex: 1;
-    min-width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.info-details {
-    background: var(--cor-principal);
-    color: white;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-.info-details h3 {
-    color: var(--cor-destaque);
-    margin-bottom: 15px;
-}
-
-.info-details p {
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-}
-
-.map-container {
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    border: 2px solid #ddd;
-}
+footer { background-color: var(--cor-principal); color: white; text-align: center; padding: 40px 5%; font-size: 0.95rem; }
 
 /* =========================================
-   8. RODAPÉ SIMPLIFICADO
+   8. REGRAS EXCLUSIVAS PARA TELEMÓVEL
    ========================================= */
-footer {
-    background-color: var(--cor-principal); /* O fundo Azul Escuro */
-    color: white;
-    text-align: center;
-    padding: 40px 5%; /* Espaço em cima e em baixo para respirar */
-    font-size: 0.95rem;
-}
-
-footer p {
-    margin-bottom: 8px; /* Pequeno espaço entre as linhas de texto */
-    letter-spacing: 0.5px; /* Afasta ligeiramente as letras para ler melhor */
-}
-
-/* =========================================
-       CORREÇÕES FINAIS DE TELEMÓVEL
-       ========================================= */
+@media (max-width: 768px) {
+    /* Header & Menu */
+    .logo-subtitle { display: none; }
+    .menu-toggle { display: flex; }
+    .main-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 99; }
+    .main-nav.active { display: block; }
+    .main-nav ul { flex-direction: column; gap: 0;}
+    .main-nav li { border-bottom: 1px solid #f1f5f9; text-align: center; }
+    .main-nav a { display: block; padding: 15px; }
     
-    /* 1. Forçar o iPhone a deixar o NIF a branco */
-    footer a, 
-    footer a[href^="tel"] {
-        color: white !important;
-        text-decoration: none !important;
-    }
+    /* Animação Hamburger */
+    .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+    .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* 2. Arrumar as caixas da Empresa e alinhar texto à esquerda */
-    .about-card {
-        border-radius: 8px !important; /* Arredonda os 4 cantos da caixa */
-        margin-bottom: 10px; /* Dá um respiro extra entre o fundador e a história */
-    }
+    /* Estrutura Geral */
+    section, .hero, .about-section, .contact-page, .faq-section { padding: 40px 5%; }
     
-    .about-card p {
-        text-align: left !important; /* Tira o justificado para não criar buracos no texto */
-        font-size: 0.95rem; /* Letra um bocadinho mais legível */
-    }
+    /* Forçar 1 Coluna em Tudo */
+    .services-grid, .about-grid, .portfolio-grid, .contact-grid, .footer-grid { grid-template-columns: 1fr !important; gap: 20px; }
+
+    /* Tipografia Mobile */
+    h2, .hero h2, .contact-page h2 { font-size: 1.5rem !important; margin-bottom: 15px; }
+    p, .hero p, .contact-intro { font-size: 0.95rem; }
+    .btn { display: block; width: 100%; text-align: center; }
+
+    /* Ajustes Empresa (Centrar Tudo) */
+    .about-card { padding: 25px 20px; text-align: center; border-radius: 8px !important; margin-bottom: 10px; }
+    .about-card p { text-align: center !important; font-size: 0.95rem; }
+    .founder-list { display: table; margin: 20px auto 0 auto; text-align: left; padding-top: 15px; }
+    .founder-list li { font-size: 0.85rem; }
+
+    /* Ajustes Contactos & Mapa */
+    .contact-form { padding: 20px; }
+    .map-container iframe { height: 250px; }
+    
+    /* FAQ Mobile */
+    .faq-question { font-size: 0.95rem; padding: 15px; }
+    .faq-answer p { padding: 0 15px 0px 15px; font-size: 0.9rem; }
+
+    /* Forçar o iPhone a deixar o NIF a branco e não clicável */
+    footer a, footer a[href^="tel"] { color: white !important; text-decoration: none !important; pointer-events: none; }
+}
