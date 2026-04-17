@@ -608,3 +608,25 @@ footer p {
     margin-bottom: 8px; /* Pequeno espaço entre as linhas de texto */
     letter-spacing: 0.5px; /* Afasta ligeiramente as letras para ler melhor */
 }
+
+/* =========================================
+       CORREÇÕES FINAIS DE TELEMÓVEL
+       ========================================= */
+    
+    /* 1. Forçar o iPhone a deixar o NIF a branco */
+    footer a, 
+    footer a[href^="tel"] {
+        color: white !important;
+        text-decoration: none !important;
+    }
+
+    /* 2. Arrumar as caixas da Empresa e alinhar texto à esquerda */
+    .about-card {
+        border-radius: 8px !important; /* Arredonda os 4 cantos da caixa */
+        margin-bottom: 10px; /* Dá um respiro extra entre o fundador e a história */
+    }
+    
+    .about-card p {
+        text-align: left !important; /* Tira o justificado para não criar buracos no texto */
+        font-size: 0.95rem; /* Letra um bocadinho mais legível */
+    }
